@@ -154,7 +154,7 @@ export default function TrainerDashboard({ navigation }) {
               <View>
                 <HStack>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("View other Data")}
+                    onPress={() => navigation.navigate("View other Workout Plans")}
                   >
                     <Image
                       shadow={2}

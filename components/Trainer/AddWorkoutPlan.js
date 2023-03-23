@@ -118,7 +118,7 @@ const AddWorkoutPlan = () => {
                     <Select.Item
                       shadow={2}
                       label="Shoulders"
-                      value="chemTest"
+                      value="shoulders"
                     />
                      <Select.Item
                       shadow={2}

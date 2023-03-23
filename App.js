@@ -10,6 +10,7 @@ import TrainerDashboard from './components/Trainer/TrainerDashboard';
 import AddWorkoutPlan from './components/Trainer/AddWorkoutPlan';
 import DisplayWorkoutPlans from './components/Trainer/DisplayWorkoutPlans';
 import UserProfile from './components/Common/UserProfile';
+import DisplayOtherWorkoutPlans from './components/Trainer/DisplayOtherWorkoutPlans';
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
@@ -20,9 +21,11 @@ export default function App() {
     <Stack.Screen name="trainer Dashboard" component={TrainerDashboard}/>
     <Stack.Screen name="Add Workout Plan" component={AddWorkoutPlan}/>
     <Stack.Screen name="Display Workout Plans" component={DisplayWorkoutPlans}/>
+    <Stack.Screen name="View other Workout Plans" component={DisplayOtherWorkoutPlans}/>
     <Stack.Screen name="User Profile" component={UserProfile}/>
     <Stack.Screen name="Button" component={ButtonComponent}/>
     <Stack.Screen name="Test" component={Test}/>
+  
     </Stack.Navigator>
     </NavigationContainer>
   );
