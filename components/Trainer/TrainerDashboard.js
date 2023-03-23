@@ -140,7 +140,7 @@ export default function TrainerDashboard({ navigation }) {
                     />
                   </TouchableOpacity>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("Display Test Data")}
+                    onPress={() => navigation.navigate("Display Workout Plans")}
                   >
                     <Image
                       shadow={2}
