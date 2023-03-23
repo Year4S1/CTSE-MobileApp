@@ -130,7 +130,7 @@ export default function TrainerDashboard({ navigation }) {
               <View style={styles.firstRow}>
                 <HStack alignItems="center">
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("Add Test Data")}
+                    onPress={() => navigation.navigate("Add Workout Plan")}
                   >
                     <Image
                       shadow={2}
