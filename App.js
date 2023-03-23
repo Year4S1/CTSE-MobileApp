@@ -4,14 +4,17 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Test from './components/Test';
 import ButtonComponent from './components/ButtonComponent';
+import Login from './components/Common/Login';
+import Registration from './components/Common/Registration';
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
     <Stack.Navigator>
-
+    <Stack.Screen name="Registration" component={Registration}/>
     <Stack.Screen name="Button" component={ButtonComponent}/>
     <Stack.Screen name="Test" component={Test}/>
+   
 
     </Stack.Navigator>
     </NavigationContainer>
