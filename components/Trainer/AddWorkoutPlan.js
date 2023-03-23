@@ -20,18 +20,14 @@ import Footer from "../Common/Footer";
 
 const AddWorkoutPlan = () => {
 
-  
-
   const [date, setDate] = useState("");
-  const [testId, setTestId] = useState("");
-  const [testType, setTestType] = useState("");
-  const [province, setProvince] = useState("");
-  const [priority, setPriority] = useState("");
+  const [workoutPlanId, setWorkoutId] = useState("");
+  const [bodyType, setBodyType] = useState("");
+  const [intensity, setIntensity] = useState("");
+  const [workoutType, setWorkoutType] = useState("");
   const [visibility, setVisibility] = useState("");
-
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
-
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const showDatePicker = () => {
@@ -59,24 +55,24 @@ const AddWorkoutPlan = () => {
   }, []);
 
   const addTestResults = () => {
-    console.log(testId, testType, province, visibility);
+    
 
     firebase
       .firestore()
-      .collection("TestResults")
+      .collection("WorkoutPlans")
       .add({
         UserName: userName,
         UserID: userId,
-        TestID: testId,
-        TestType: testType,
+        WorkoutPlanId: workoutPlanId,
+        WorkoutType:workoutType,
+        BodyType: bodyType,
         SubDate: date,
-        Province: province,
-        Priority: priority,
+        Intensity: intensity,
         visibility: visibility,
         timeStamp:firebase.firestore.FieldValue.serverTimestamp()
       })
       .then(() => {
-        alert("Results Added!");
+        alert("Workout Plan Added!");
       });
   };
   return (
@@ -87,70 +83,79 @@ const AddWorkoutPlan = () => {
           <Box w="100%">
             <FormControl>
               <Stack mx="8">
-                <FormControl.Label>Test ID</FormControl.Label>
+                <FormControl.Label>Workout Plan ID</FormControl.Label>
                 <Input
                   onChangeText={(val) => {
-                    setTestId(val);
+                    setWorkoutId(val);
                   }}
                   type="text"
                   placeholder="Please enter the Test ID"
                 />
                 <View style={{ marginVertical: 10 }}>
-                  <FormControl.Label>Test Sample Type</FormControl.Label>
+                  <FormControl.Label>Workout Type</FormControl.Label>
                   <Select
                     shadow={2}
-                    selectedValue={testType}
+                    selectedValue={workoutType}
                     minWidth="200"
-                    accessibilityLabel="choose type"
-                    placeholder="please choose Test Type"
+                    accessibilityLabel="Choose Workout Type"
+                    placeholder="please choose Workout Type"
                     _selectedItem={{
                       bg: "teal.600",
                       endIcon: <CheckIcon size="5" />,
                     }}
-                    onValueChange={(value) => setTestType(value)}
+                    onValueChange={(value) => setWorkoutType(value)}
                   >
                     <Select.Item
                       shadow={2}
-                      label="Heavy Metal Test"
-                      value="heavyMetal"
+                      label="Chest"
+                      value="chest"
                     />
                     <Select.Item
                       shadow={2}
-                      label="Microrganisms Test"
-                      value="microTest"
+                      label="Legs"
+                      value="legs"
                     />
                     <Select.Item
                       shadow={2}
-                      label="Chemical Test"
+                      label="Shoulders"
                       value="chemTest"
+                    />
+                     <Select.Item
+                      shadow={2}
+                      label="Triceps"
+                      value="triceps"
                     />
                   </Select>
                 </View>
 
                 <View>
-                  <FormControl.Label>Povince</FormControl.Label>
+                  <FormControl.Label>Body Type</FormControl.Label>
                   <Select
                     shadow={2}
-                    selectedValue={province}
+                    selectedValue={bodyType}
                     minWidth="200"
-                    accessibilityLabel="choose Province"
-                    placeholder="please choose Province"
+                    accessibilityLabel="choose Body Type"
+                    placeholder="please choose Body Type"
                     _selectedItem={{
                       bg: "teal.600",
                       endIcon: <CheckIcon size="5" />,
                     }}
-                    onValueChange={(value) => setProvince(value)}
+                    onValueChange={(value) => setBodyType(value)}
                   >
-                    <Select.Item shadow={2} label="central" value="central" />
                     <Select.Item
                       shadow={2}
-                      label="NorthCentral"
-                      value="North central"
+                      label="Skinny"
+                      value="skinny"
                     />
                     <Select.Item
                       shadow={2}
-                      label="NorthWestern"
-                      value="North Western"
+                      label="Average"
+                      value="Average"
+                    />
+                       <Select.Item
+                      shadow={2}
+                      label="Fat"
+                      value="fat"
                     />
                   </Select>
                 </View>
@@ -167,19 +172,19 @@ const AddWorkoutPlan = () => {
                   />
                 </View>
                 <View>
-                  <FormControl.Label>Priority</FormControl.Label>
+                  <FormControl.Label>Intensity</FormControl.Label>
                 </View>
                 <Select
                   shadow={2}
-                  selectedValue={priority}
+                  selectedValue={intensity}
                   minWidth="200"
-                  accessibilityLabel="choose Priority"
-                  placeholder="please choose Priority"
+                  accessibilityLabel="choose Intensity"
+                  placeholder="please choose Intensity"
                   _selectedItem={{
                     bg: "teal.600",
                     endIcon: <CheckIcon size="5" />,
                   }}
-                  onValueChange={(value) => setPriority(value)}
+                  onValueChange={(value) => setIntensity(value)}
                 >
                   <Select.Item shadow={2} label="High" value="high" />
                   <Select.Item shadow={2} label="Medium" value="medium" />
@@ -195,7 +200,7 @@ const AddWorkoutPlan = () => {
                 </View>
 
                 <View style={{ marginVertical: 10 }}>
-                  <FormControl.Label>Test record visibility</FormControl.Label>
+                  <FormControl.Label>Workout plan visibility</FormControl.Label>
                   <Checkbox
                     onChange={setVisibility}
                     value={visibility}
@@ -208,7 +213,7 @@ const AddWorkoutPlan = () => {
                   style={{ marginVertical: 35 }}
                   onPress={addTestResults}
                 >
-                  Add Test Data
+                  Add Workout Plan
                 </NativeBaseButton>
               </Stack>
             </FormControl>
