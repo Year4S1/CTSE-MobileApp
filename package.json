@@ -9,11 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@expo/webpack-config": "^18.0.1",
-=======
     "@react-native-community/datetimepicker": "^7.0.0",
->>>>>>> 2d5350c1817c6aa1e35953afcd9be6c28f6fa1c1
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "expo": "~48.0.9",
