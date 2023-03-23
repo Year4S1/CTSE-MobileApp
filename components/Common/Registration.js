@@ -137,10 +137,10 @@ const Registration = ({navigation}) => {
                 }}
                 onValueChange={(value) => setRole(value)}
               >
-                <Select.Item shadow={2} label="CEO" value="ceo" />
-                <Select.Item shadow={2} label="Tester" value="tester" />
-                <Select.Item shadow={2} label="Beneficiary" value="beneficiary" />
-                <Select.Item shadow={2} label="Donator" value="donator" />
+                <Select.Item shadow={2} label="Trainer" value="trainer" />
+                <Select.Item shadow={2} label="User" value="user" />
+                <Select.Item shadow={2} label="Gym Owner" value="beneficiary" />
+                <Select.Item shadow={2} label="Nutritionist" value="nutritionist" />
               </Select>
             </FormControl>
             <FormControl>
