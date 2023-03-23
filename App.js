@@ -9,10 +9,7 @@ export default function App() {
   return (
     <NavigationContainer>
     <Stack.Navigator>
-    {/* <View style={styles.container}>
-      <Test />
-      <StatusBar style="auto" />
-    </View> */}
+  
     <Stack.Screen name="Button" component={ButtonComponent}/>
     <Stack.Screen name="Test" component={Test}/>
 
