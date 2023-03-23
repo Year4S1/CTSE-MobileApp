@@ -90,7 +90,7 @@ export default function TrainerDashboard({ navigation }) {
         <View style={{ marginLeft: 30, marginTop: 10}}>
         <ImageBackground
             blurRadius={0}
-            source={require("../../assets/pngSplash.png")}
+            //source={require("../../assets/pngSplash.png")}
           >
           <Card style={styles.card}>
             <Card.Content>
