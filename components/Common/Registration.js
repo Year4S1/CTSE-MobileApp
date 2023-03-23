@@ -48,7 +48,7 @@ const Registration = ({navigation}) => {
           });
 
        alert("signed in succsesfully!");
-       //navigation.navigate("Login")
+       navigation.navigate("Login")
       
       })
       .catch((error) => {
