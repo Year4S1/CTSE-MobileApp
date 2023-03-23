@@ -23,7 +23,44 @@ const Registration = ({navigation}) => {
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleRegistration =async () => {
-   
+    await firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((res) => {
+          res.user.updateProfile({
+              displayName:userName,
+              photoURL:role
+          })
+
+          firebase
+          .firestore()
+          .collection("RegistrationDetails")
+          .add({
+            UserID:firebase.auth().currentUser.uid,
+            UserName: userName,
+            Email: email,
+            Password: password,
+            Role: role,
+            PhoneNumber:phoneNumber      
+          })
+          .then(() => {
+            console.log("added to regitration details")
+          });
+
+       alert("signed in succsesfully!");
+       //navigation.navigate("Login")
+      
+      })
+      .catch((error) => {
+        if (error.code === "auth/email-already-in-use") {
+          alert("That email address is already in use!");
+        }
+
+        if (error.code === "auth/invalid-email") {
+         alert("That email address is invalid!");
+        }
+
+      });
   };
 
   return (
