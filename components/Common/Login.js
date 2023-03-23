@@ -29,13 +29,14 @@ const Login = ({ navigation }) => {
 
         if (role === "trainer") {
           navigation.navigate("trainer Dashboard");
-        } else if (role === "") {
-          navigation.navigate("ceo Dashboard");
+        } else if (role === "gymowner") {
+          navigation.navigate("Gym Owner Dashboard");
         } else if (role === "donator") {
           navigation.navigate("donator Dashboard");
-        } else {
-          navigation.navigate("beneficiary Dashboard");
-        }
+        } 
+        // else {
+        //   navigation.navigate("beneficiary Dashboard");
+        // }
       })
 
       .catch((error) => alert("invalid email or password!!"));
