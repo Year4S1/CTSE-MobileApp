@@ -9,6 +9,7 @@ import {
   Stack,
   WarningOutlineIcon,
   Button as NativeBaseButton,
+  TextArea,
 } from "native-base";
 import React, { useMemo, useState } from "react";
 import { Button, Image, ImageBackground, Platform, StyleSheet, Text, View } from "react-native";
@@ -30,6 +31,7 @@ const AddWorkoutPlan = () => {
   const [visibility, setVisibility] = useState("");
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
+  const [workoutSchedule, setWorkoutSchedule] = useState("");
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const showDatePicker = () => {
@@ -70,6 +72,7 @@ const AddWorkoutPlan = () => {
         BodyType: bodyType,
         SubDate: date,
         Intensity: intensity,
+        WorkoutSchedule:workoutSchedule,
         visibility: visibility,
         timeStamp:firebase.firestore.FieldValue.serverTimestamp()
       })
@@ -85,7 +88,7 @@ const AddWorkoutPlan = () => {
           <Box w="100%">
             <FormControl>
               <Stack mx="8">
-                <FormControl.Label style={{fontWeight:"bold"}}>Workout Plan ID</FormControl.Label>
+                <Text style={tw`font-black mb-3`}>Workout Plan ID</Text>
                 <Input
                   onChangeText={(val) => {
                     setWorkoutId(val);
@@ -94,7 +97,7 @@ const AddWorkoutPlan = () => {
                   placeholder="Please enter the Test ID"
                 />
                 <View style={{ marginVertical: 10 }}>
-                  <Text style={tw`font-black `} >Workout Type</Text>
+                  <Text style={tw`font-black mb-3 `} >Workout Type</Text>
                   <Select
                     shadow={2}
                     selectedValue={workoutType}
@@ -131,7 +134,7 @@ const AddWorkoutPlan = () => {
                 </View>
 
                 <View>
-                  <Text style={tw`font-black`}>Body Type</Text>
+                  <Text style={tw`font-black mb-3`}>Body Type</Text>
                   <Select
                     shadow={2}
                     selectedValue={bodyType}
@@ -163,7 +166,7 @@ const AddWorkoutPlan = () => {
                 </View>
 
                 <View style={{ marginVertical: 10 }}>
-                  <FormControl.Label>Date of Submitting</FormControl.Label>
+                  <Text style={tw`font-black mb-3`} >Date of Submitting</Text>
                   <Input
                     onPressIn={() => {
                       showDatePicker();
@@ -174,7 +177,7 @@ const AddWorkoutPlan = () => {
                   />
                 </View>
                 <View>
-                  <FormControl.Label>Intensity</FormControl.Label>
+                  <Text style={tw`font-black mb-3`} >Workout Intensity</Text>
                 </View>
                 <Select
                   shadow={2}
@@ -200,9 +203,15 @@ const AddWorkoutPlan = () => {
                     onCancel={hideDatePicker}
                   />
                 </View>
+                <View style={{ marginVertical: 10 }}>
+                <Text style={tw`font-black mb-3`} >Workout plan Schedule</Text>
+                <TextArea  onChangeText={(val) => {
+                    setWorkoutSchedule(val);
+                  }} h={20} placeholder="Please enter the Workout plan Schedule" w="100%" maxW="500" />
+                </View>
 
                 <View style={{ marginVertical: 10 }}>
-                  <FormControl.Label>Workout plan visibility</FormControl.Label>
+                  <Text style={tw`font-black mb-3`} >Workout plan visibility</Text>
                   <Checkbox
                     onChange={setVisibility}
                     value={visibility}
@@ -212,7 +221,7 @@ const AddWorkoutPlan = () => {
                   </Checkbox>
                 </View>
                 <NativeBaseButton
-                  style={{ marginVertical: 35 }}
+                  style={{ marginVertical: 15 }}
                   onPress={addTestResults}
                 >
                   Add Workout Plan

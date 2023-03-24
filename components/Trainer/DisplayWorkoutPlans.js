@@ -69,6 +69,7 @@ const DisplayWorkoutPlans = ({ navigation }) => {
                       <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Workout Type :{item.WorkoutType}</Title>
                       <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Body Type :{item.BodyType}</Title>
                       <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Intensity :{item.Intensity}</Title>
+                      <Title style={tw`inline-block bg-gray-200  px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>{item.WorkoutSchedule}</Title>
                       <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Added Date :{item.SubDate}</Title>
                     </Card.Content>
                     <Card.Actions>
