@@ -34,7 +34,27 @@ import {
         setUserId(UserId);
       }, []);
  
+  const addGym=()=>{
+
+    
   
+  firebase.firestore()
+    .collection('Gym List')
+    .add({
+      UserName: userName,
+      UserID: userId,
+      GymName:gymName,
+      Location:location,
+      Contact:contact,
+      OpenTime:openTime,
+    })
+    .then(() => {
+      alert('Gym Details Added!');
+    });
+  
+  
+  
+  }
     return (
       <NativeBaseProvider>
         <>
