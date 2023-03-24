@@ -73,28 +73,7 @@ const DisplayWorkoutPlans = ({ navigation }) => {
                       <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Added Date :{item.SubDate}</Title>
                     </Card.Content>
                     <Card.Actions>
-                      {/* <Button
-                color="#FF0000"
-                onPress={() => {
-                  handleDelete(index);
-                }}
-                title="Delete"
-              >
-            
-              </Button> */}
-
-                      {/* <Button
-                color="#00FF00"0
-
-                
-                onPress={() => {
-                  navigation.navigate("Update Test Record",
-                    {currentRecordId:currentRecordId[index]});
-                }}
-                title="Update"
-              >
-
-              </Button> */}
+                      
                       <AntDesign
                         onPress={() => {
                           navigation.navigate("Update Workout Plan", {

@@ -21,6 +21,8 @@ import { useEffect } from "react";
 import { firebase } from "../../Config";
 import { useState } from "react";
 import { useIsFocused } from "@react-navigation/native";
+import image from "../../assets/gymdashboard.jpeg"
+
 export default function GymownerDashboard({ navigation }) {
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
@@ -86,27 +88,24 @@ export default function GymownerDashboard({ navigation }) {
 
   return (
     <NativeBaseProvider >
-      <View  fontStyles style={styles.stackStyles} s>
-        <View style={{ marginLeft: 30, marginTop: 10}}>
-        <ImageBackground
-            blurRadius={0}
-            source={require("../../assets/pngSplash.png")}
-          >
+      <ImageBackground source={image} style={{flex:1}}>
+      <View >
+        <View style={{marginTop: 10}}>
           <Card style={styles.card}>
             <Card.Content>
-              <Text fontSize="2xl" bold>
+              <Text style={{color:"white"}} fontSize="2xl" bold>
                 {DayType}! {userName}
               </Text>
-              <Text style={{ marginTop: 10 }} fontSize="md">
+              <Text style={{ marginTop: 10, color:"white"}} fontSize="md">
                 Total Sample Count: {totSampleCount}
               </Text>
-              <Text style={{ marginTop: 10 }} fontSize="md">
+              <Text style={{ marginTop: 10, color:"white" }} fontSize="md">
                 Last Record Sample ID: {lastRecordId}
               </Text>
-              <Text style={{ marginTop: 10 }} fontSize="md">
+              <Text style={{ marginTop: 10, color:"white" }} fontSize="md">
                 Last Record Submited Date: {subDate}
               </Text>
-              <Text style={{ marginTop: 10 }} fontSize="md">
+              <Text style={{ marginTop: 10, color:"white" }} fontSize="md">
                 High priority samples: {hPriorityCount}
               </Text>
             </Card.Content>
@@ -122,7 +121,6 @@ export default function GymownerDashboard({ navigation }) {
             </Center>
     
           </Card>
-          </ImageBackground>
         </View>
         <Stack space={3} alignItems="center">
           <View style={styles.options}>
@@ -180,6 +178,7 @@ export default function GymownerDashboard({ navigation }) {
         </Stack>
         <Footer /> 
       </View>
+      </ImageBackground>
     </NativeBaseProvider>
   );
 }
@@ -192,9 +191,10 @@ const styles = StyleSheet.create({
   },
   card:{
     marginTop:20,
-    backgroundColor: "rgba(178, 235, 250, 0.2)",
-    borderRadius: 1,
-    boxShadow: '0 4px 30px rgba(70, 200, 250, 0.15)',
+    backgroundColor: "rgba(255, 99, 102, 0.1)",
+    // borderRadius: 10,
+    marginRight:10,
+    marginLeft:10,
   },
   stackStyles: {
     marginTop: 0,
