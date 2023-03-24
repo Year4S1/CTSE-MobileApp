@@ -22,12 +22,14 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { firebase } from "../../Config";
+import { useNavigation } from "@react-navigation/native";
 
 function JoinGym() {
   const image = {
     uri: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z3ltfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
   };
   const UserName = firebase.auth().currentUser.displayName;
+  const navigation = useNavigation();
 
   const [gyms, setGymList] = useState([]);
   const [trainers, setTrainers] = useState([]);
@@ -86,6 +88,7 @@ function JoinGym() {
       })
       .then(() => {
         alert("Gym User Added!");
+        navigation.navigate("user Dashboard")
       });
   }
 
