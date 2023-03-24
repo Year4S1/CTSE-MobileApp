@@ -6,39 +6,39 @@ import { firebase } from "../../Config";
 import { AntDesign } from "@expo/vector-icons";
 
 
-const ViewGym = ({ navigation }) => {
-  const [gymData, setGymData] = useState([]);
-  const [currentGymID, setCurrentGymID] = useState([]);
+const ViewMembershipPlan = ({ navigation }) => {
+  const [planData, setPlanData] = useState([]);
+  const [currentPlanID, setCurrentPlanID] = useState([]);
 const role=firebase.auth().currentUser.photoURL
   const handleDelete = (index) => {
     firebase
       .firestore()
-      .collection("Gym List")
+      .collection("Membership Plan")
       .doc(currentProductId[index])
       .delete()
       .then(() => {
         alert("Deleted");
       });
 
-    const recordCopy = [...gymData];
+    const recordCopy = [...planData];
     recordCopy.splice(index, 1);
-    setGymData(recordCopy);
+    setPlanData(recordCopy);
   };
 
   useEffect(() => {
     firebase
       .firestore()
-      .collection("Gym List")
+      .collection("Membership Plan")
       .get()
       .then((querySnapshot) => {
         console.log("Total users: ", querySnapshot.size);
-       const products=[]
+       const plans=[]
         querySnapshot.forEach((documentSnapshot) => {
         
-            products.push(documentSnapshot.data());
-          setGymData(products);
+            plans.push(documentSnapshot.data());
+          setPlanData(plans);
 
-          setCurrentGymID((prevState) => [
+          setCurrentPlanID((prevState) => [
             ...prevState,
             documentSnapshot.id,
           ]);
@@ -52,12 +52,10 @@ const role=firebase.auth().currentUser.photoURL
     backgroundColor: "rgba(78, 235, 250, 0.2)",
     borderRadius:0,
     boxShadow: '0 4px 30px rgba(70, 200, 250, 0.15)',}}>
-          <Card.Title title={`Gym ${index + 1}`} />
+          <Card.Title title={`Plan ${index + 1}`} />
           <Card.Content>
-            <Title>Gym Name :{item.GymName}</Title>
-            <Title>Location :{item.Location}</Title>
-            <Title>Contact :{item.Contact}</Title>
-            <Title>Open Time :{item.OpenTime}</Title>
+            <Title>Gym Name :{item.PlanName}</Title>
+            <Title>Location :{item.Price}</Title>
           </Card.Content>
       
           {(role==="gymowner")&& (
@@ -95,4 +93,4 @@ const role=firebase.auth().currentUser.photoURL
   });
 };
 
-export default ViewGym;
+export default ViewMembershipPlan;
