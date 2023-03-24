@@ -28,7 +28,7 @@ const Login = ({ navigation }) => {
         const role = firebase.auth().currentUser?.photoURL;
 
         if (role === "trainer") {
-          navigation.navigate("trainer Dashboard");
+          navigation.navigate("Trainer Dashboard");
         } else if (role === "user") {
           navigation.navigate("user Dashboard");
         } else if (role === "donator") {

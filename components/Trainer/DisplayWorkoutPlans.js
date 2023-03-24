@@ -52,7 +52,7 @@ const DisplayWorkoutPlans = ({ navigation }) => {
 
   return (
     <NativeBaseProvider>
-        <ImageBackground source={image} resizeMode="cover">
+        <ImageBackground source={image} style={{flex:1}} resizeMode="cover">
       <ScrollView>
         {
           workoutPlans.map((item, index) => {
