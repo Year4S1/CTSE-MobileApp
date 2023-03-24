@@ -25,11 +25,13 @@ import image from "../../assets/displayPlansBlackandWhite.jpg"
 export default function TrainerDashboard({ navigation }) {
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
-  const [userRole, setUserRole] = useState("");
+  const [userRole, setUserRole] = useState(""); 
   const [lastRecordId, setlastRecordId] = useState("");
   const [subDate, setSubDate] = useState("");
-  const [hPriorityCount, setHPriorityCount] = useState(0);
-  const [totSampleCount, setTotSampleCount] = useState(0);
+  const [highIntensityCount, setHIntensityCount] = useState(0);
+  const [mediumIntensityCount, setMIntensityCount] = useState(0);
+  const [lowIntensityCount, setLIntensityCount] = useState(0);
+  const [totWorkoutCount, setTotWorkoutCount] = useState(0);
   const isFocused=useIsFocused()
   useEffect(() => {
  
@@ -39,25 +41,35 @@ export default function TrainerDashboard({ navigation }) {
     const UserId = firebase.auth().currentUser.uid;
     setUserId(UserId);
 
-    let hPriorityCount = 0;
+    let hIntensityCount = 0;
+    let mIntensityCount = 0;
+    let lIntensityCount = 0;
     firebase
       .firestore()
-      .collection("TestResults")
+      .collection("WorkoutPlans")
       .where("UserID", "==", firebase.auth().currentUser.uid)
       .get()
       .then((querySnapshot) => {
-        setTotSampleCount(querySnapshot.size);
+        setTotWorkoutCount(querySnapshot.size);
         querySnapshot.forEach((documentSnapshot) => {
-          if (documentSnapshot.data().Priority === "high") {
-            ++hPriorityCount;
-            setHPriorityCount(hPriorityCount);
+          if (documentSnapshot.data().Intensity === "high") {
+            ++hIntensityCount;
+            setHIntensityCount(hIntensityCount);
+          }
+          else if (documentSnapshot.data().Priority === "medium") {
+            ++mIntensityCount;
+            setMIntensityCount(mIntensityCount);
+          }
+          else {
+            ++lIntensityCount;
+            setLIntensityCount(lIntensityCount);
           }
         });
       });
 
     firebase
       .firestore()
-      .collection("TestResults")
+      .collection("WorkoutPlans")
 
       .where("UserID", "==", firebase.auth().currentUser.uid)
      .limit(1)
@@ -97,16 +109,16 @@ export default function TrainerDashboard({ navigation }) {
                 {DayType}! {userName}
               </Text>
               <Text style={{ marginTop: 10,color:"white",fontWeight:"bold" }} fontSize="md">
-                Total Sample Count: {totSampleCount}
+                Total Workouts Added: {totWorkoutCount}
               </Text>
               <Text style={{ marginTop: 10,color:"white",fontWeight:"bold" }} fontSize="md">
-                Last Record Sample ID: {lastRecordId}
+                High Intensity Workouts: {highIntensityCount}
               </Text>
               <Text style={{ marginTop: 10,color:"white",fontWeight:"bold" }} fontSize="md">
-                Last Record Submited Date: {subDate}
+              Medium Intensity Workouts: {mediumIntensityCount}
               </Text>
               <Text style={{ marginTop: 10,color:"white",fontWeight:"bold" }} fontSize="md">
-                High priority samples: {hPriorityCount}
+              Low Intensity Workouts: {lowIntensityCount}
               </Text>
             </Card.Content>
             <Center>

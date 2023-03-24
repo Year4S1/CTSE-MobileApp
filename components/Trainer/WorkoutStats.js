@@ -38,7 +38,7 @@ console.log("stat name",firebase.auth().currentUser.displayName);
 
   return (
     <NativeBaseProvider>
-        <ImageBackground source={image} resizeMode="cover">
+        <ImageBackground source={image} resizeMode="cover" style={{flex:1}}>
       <ScrollView>
         {
           workoutPlans.map((item, index) => {
