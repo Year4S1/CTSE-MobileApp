@@ -50,6 +50,7 @@ import {
     })
     .then(() => {
       alert('Gym Details Added!');
+      navigation.navigate("Gym Owner Dashboard");
     });
   
   
