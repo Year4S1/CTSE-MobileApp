@@ -7,6 +7,7 @@ import ButtonComponent from './components/ButtonComponent';
 import Login from './components/Common/Login';
 import Registration from './components/Common/Registration';
 import TrainerDashboard from './components/Trainer/TrainerDashboard';
+import UserDashboard from './components/User/UserDashboard'
 import AddWorkoutPlan from './components/Trainer/AddWorkoutPlan';
 import DisplayWorkoutPlans from './components/Trainer/DisplayWorkoutPlans';
 import UserProfile from './components/Common/UserProfile';
@@ -19,6 +20,7 @@ export default function App() {
     <Stack.Screen name="Login" component={Login}/>
     <Stack.Screen name="Registration" component={Registration}/>
     <Stack.Screen name="trainer Dashboard" component={TrainerDashboard}/>
+    <Stack.Screen name="user Dashboard" component={UserDashboard}/>
     <Stack.Screen name="Add Workout Plan" component={AddWorkoutPlan}/>
     <Stack.Screen name="Display Workout Plans" component={DisplayWorkoutPlans}/>
     <Stack.Screen name="View other Workout Plans" component={DisplayOtherWorkoutPlans}/>
