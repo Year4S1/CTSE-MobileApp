@@ -29,8 +29,8 @@ const Login = ({ navigation }) => {
 
         if (role === "trainer") {
           navigation.navigate("trainer Dashboard");
-        } else if (role === "") {
-          navigation.navigate("ceo Dashboard");
+        } else if (role === "user") {
+          navigation.navigate("user Dashboard");
         } else if (role === "donator") {
           navigation.navigate("donator Dashboard");
         } else {
