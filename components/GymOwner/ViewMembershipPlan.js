@@ -45,7 +45,7 @@ const role=firebase.auth().currentUser.photoURL
         });
       });
   }, []);
-  return gymData.map((item, index) => {
+  return planData.map((item, index) => {
     return (
       <View style={{ marginVertical: 10 }}>
         <Card key={index} style={{ marginVertical: 10,marginLeft:30,marginRight:30,marginTop:20,
@@ -53,7 +53,7 @@ const role=firebase.auth().currentUser.photoURL
     borderRadius:0,
     boxShadow: '0 4px 30px rgba(70, 200, 250, 0.15)',}}>
           <Card.Title title={`Plan ${index + 1}`} />
-          <Card.Content>
+          <Card.Content key={item.id}>
             <Title>Gym Name :{item.PlanName}</Title>
             <Title>Location :{item.Price}</Title>
           </Card.Content>

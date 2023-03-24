@@ -164,7 +164,7 @@ export default function GymownerDashboard({ navigation }) {
                     />
                   </TouchableOpacity>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("Display Percentages")}
+                    onPress={() => navigation.navigate("View Membership Plan")}
                   >
                     <Image
                       source={require("../../assets/viewmembership.png")}
