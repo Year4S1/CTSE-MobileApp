@@ -89,10 +89,10 @@ import {
                     }}
                     shadow={2}
                     type="text"
-                    placeholder="Please enter the Product Name"
+                    placeholder="Please enter the Gym Name"
                   />
 
-                <FormControl.Label>location</FormControl.Label>
+                <FormControl.Label>Location</FormControl.Label>
                   <Input
                   onChangeText={val=>{
                     setLocation(val)
@@ -118,7 +118,7 @@ import {
                     }}
                     shadow={2}
                     type="text"
-                    placeholder="Please enter the Product ID"
+                    placeholder="Please enter the Location"
                   />
 
                 <FormControl.Label>Contact</FormControl.Label>
@@ -147,7 +147,7 @@ import {
                     }}
                     shadow={2}
                     type="text"
-                    placeholder="Please enter Quantity"
+                    placeholder="Please enter Contact Number"
                   />
                   
                   <FormControl.Label>Open Time</FormControl.Label>
@@ -176,7 +176,7 @@ import {
                     }}
                     shadow={2}
                     type="text"
-                    placeholder="Please enter the Price"
+                    placeholder="Please enter the Open Time"
                   />
         
   

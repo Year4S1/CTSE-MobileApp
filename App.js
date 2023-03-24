@@ -17,6 +17,10 @@ import MyGym from './components/User/MyGymDetail'
 import UpdateMyGym from './components/User/UpdateMyGymDetails'
 import UpdateWorkoutPlan from './components/Trainer/UpdateWorkoutPlan';
 import WorkoutStats from './components/Trainer/WorkoutStats';
+import GymownerDashboard from './components/GymOwner/GymOwnerDashboard';
+import AddGym from './components/GymOwner/AddGym';
+import ViewGym from './components/GymOwner/ViewGym';
+
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
@@ -37,6 +41,10 @@ export default function App() {
     <Stack.Screen name="Test" component={Test}/>
     <Stack.Screen name="Update Workout Plan" component={UpdateWorkoutPlan}/>
     <Stack.Screen name="Display Stats" component={WorkoutStats}/>
+
+    <Stack.Screen name="Gym Owner Dashboard" component={GymownerDashboard}/>
+    <Stack.Screen name="Add Gym" component={AddGym}/>
+    <Stack.Screen name="View Gym" component={ViewGym}/>
 
   
     </Stack.Navigator>
