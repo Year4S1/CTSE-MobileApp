@@ -43,7 +43,7 @@ const NutritionistDashboard = () => {
               justifyContent: "center",
             }}
           >
-            <Text style={{ fontSize: 22, color: "#FFFFFF" }}>Create a Meal Plan</Text>
+            <Text style={{ fontSize: 22, color: "#FFFFFF" }}>Create Meal Plan</Text>
           </TouchableOpacity>
         </View>
         <View style={[{ width: "100%", height: 50, marginTop: 10 }]}>

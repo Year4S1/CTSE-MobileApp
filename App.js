@@ -27,6 +27,7 @@ import ViewMembershipPlan from './components/GymOwner/ViewMembershipPlan';
 
 //nutritionist
 import NutritionistDashboard from './components/Nutritionist/NutritionistDashboard';
+import AddMealPlan from './components/Nutritionist/AddMealPlan';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -58,6 +59,7 @@ export default function App() {
     <Stack.Screen name="View Membership Plan" component={ViewMembershipPlan}/>
 
     <Stack.Screen name="Nutritionist Dashboard" component={NutritionistDashboard}/>
+    <Stack.Screen name="create meal plan" component={AddMealPlan}/>
     </Stack.Navigator>
     </NavigationContainer>
   );
