@@ -24,6 +24,7 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import Footer from "../Common/Footer";
 
 
+
 const UpdateWorkoutPlan = ({ route, navigation }) => {
   const { currentRecordId } = route.params;
   const [date, setDate] = useState(new Date());
@@ -35,6 +36,7 @@ const UpdateWorkoutPlan = ({ route, navigation }) => {
   const [visibility, setVisibility] = useState("");
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
+  const [workoutSchedule, setWorkoutSchedule] = useState("");
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const showDatePicker = () => {
@@ -78,6 +80,7 @@ const UpdateWorkoutPlan = ({ route, navigation }) => {
         BodyType: bodyType,
         SubDate: date,
         Intensity: intensity,
+        WorkoutSchedule:workoutSchedule,
         WorkoutType: workoutType,
         visibility: visibility,
         timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -217,6 +220,12 @@ const UpdateWorkoutPlan = ({ route, navigation }) => {
                     onConfirm={handleConfirm}
                     onCancel={hideDatePicker}
                   />
+                </View>
+                <View style={{ marginVertical: 10 }}>
+                <Text style={tw`font-black mb-3`} >Workout plan Schedule</Text>
+                <TextArea  onChangeText={(val) => {
+                    setWorkoutSchedule(val);
+                  }} h={20}  placeholder={workoutPlanData?.WorkoutSchedule} w="100%" maxW="500"  />
                 </View>
 
                 <View style={{ marginVertical: 10 }}>

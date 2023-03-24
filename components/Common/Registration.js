@@ -140,7 +140,7 @@ const Registration = ({navigation}) => {
               >
                 <Select.Item shadow={2} label="Trainer" value="trainer" />
                 <Select.Item shadow={2} label="User" value="user" />
-                <Select.Item shadow={2} label="Gym Owner" value="beneficiary" />
+                <Select.Item shadow={2} label="Gym Owner" value="gymowner" />
                 <Select.Item shadow={2} label="Nutritionist" value="nutritionist" />
               </Select>
             </FormControl>

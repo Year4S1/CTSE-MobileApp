@@ -21,17 +21,16 @@ import { useEffect } from "react";
 import { firebase } from "../../Config";
 import { useState } from "react";
 import { useIsFocused } from "@react-navigation/native";
-import image from "../../assets/displayPlansBlackandWhite.jpg"
-export default function TrainerDashboard({ navigation }) {
+import image from "../../assets/gymdashboard.jpeg"
+
+export default function GymownerDashboard({ navigation }) {
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
-  const [userRole, setUserRole] = useState(""); 
+  const [userRole, setUserRole] = useState("");
   const [lastRecordId, setlastRecordId] = useState("");
   const [subDate, setSubDate] = useState("");
-  const [highIntensityCount, setHIntensityCount] = useState(0);
-  const [mediumIntensityCount, setMIntensityCount] = useState(0);
-  const [lowIntensityCount, setLIntensityCount] = useState(0);
-  const [totWorkoutCount, setTotWorkoutCount] = useState(0);
+  const [hPriorityCount, setHPriorityCount] = useState(0);
+  const [totSampleCount, setTotSampleCount] = useState(0);
   const isFocused=useIsFocused()
   useEffect(() => {
  
@@ -41,35 +40,25 @@ export default function TrainerDashboard({ navigation }) {
     const UserId = firebase.auth().currentUser.uid;
     setUserId(UserId);
 
-    let hIntensityCount = 0;
-    let mIntensityCount = 0;
-    let lIntensityCount = 0;
+    let hPriorityCount = 0;
     firebase
       .firestore()
-      .collection("WorkoutPlans")
+      .collection("TestResults")
       .where("UserID", "==", firebase.auth().currentUser.uid)
       .get()
       .then((querySnapshot) => {
-        setTotWorkoutCount(querySnapshot.size);
+        setTotSampleCount(querySnapshot.size);
         querySnapshot.forEach((documentSnapshot) => {
-          if (documentSnapshot.data().Intensity === "high") {
-            ++hIntensityCount;
-            setHIntensityCount(hIntensityCount);
-          }
-          else if (documentSnapshot.data().Priority === "medium") {
-            ++mIntensityCount;
-            setMIntensityCount(mIntensityCount);
-          }
-          else {
-            ++lIntensityCount;
-            setLIntensityCount(lIntensityCount);
+          if (documentSnapshot.data().Priority === "high") {
+            ++hPriorityCount;
+            setHPriorityCount(hPriorityCount);
           }
         });
       });
 
     firebase
       .firestore()
-      .collection("WorkoutPlans")
+      .collection("TestResults")
 
       .where("UserID", "==", firebase.auth().currentUser.uid)
      .limit(1)
@@ -99,26 +88,25 @@ export default function TrainerDashboard({ navigation }) {
 
   return (
     <NativeBaseProvider >
-  <ImageBackground source={image} style={{flex:1}}>
-      <View  fontStyles >
-        <View style={{ marginTop: 10}}>
-        
+      <ImageBackground source={image} style={{flex:1}}>
+      <View >
+        <View style={{marginTop: 10}}>
           <Card style={styles.card}>
             <Card.Content>
               <Text style={{color:"white"}} fontSize="2xl" bold>
                 {DayType}! {userName}
               </Text>
-              <Text style={{ marginTop: 10,color:"white",fontWeight:"bold" }} fontSize="md">
-                Total Workouts Added: {totWorkoutCount}
+              <Text style={{ marginTop: 10, color:"white"}} fontSize="md">
+                Total Sample Count: {totSampleCount}
               </Text>
-              <Text style={{ marginTop: 10,color:"white",fontWeight:"bold" }} fontSize="md">
-                High Intensity Workouts: {highIntensityCount}
+              <Text style={{ marginTop: 10, color:"white" }} fontSize="md">
+                Last Record Sample ID: {lastRecordId}
               </Text>
-              <Text style={{ marginTop: 10,color:"white",fontWeight:"bold" }} fontSize="md">
-              Medium Intensity Workouts: {mediumIntensityCount}
+              <Text style={{ marginTop: 10, color:"white" }} fontSize="md">
+                Last Record Submited Date: {subDate}
               </Text>
-              <Text style={{ marginTop: 10,color:"white",fontWeight:"bold" }} fontSize="md">
-              Low Intensity Workouts: {lowIntensityCount}
+              <Text style={{ marginTop: 10, color:"white" }} fontSize="md">
+                High priority samples: {hPriorityCount}
               </Text>
             </Card.Content>
             <Center>
@@ -133,7 +121,6 @@ export default function TrainerDashboard({ navigation }) {
             </Center>
     
           </Card>
-        
         </View>
         <Stack space={3} alignItems="center">
           <View style={styles.options}>
@@ -141,21 +128,21 @@ export default function TrainerDashboard({ navigation }) {
               <View style={styles.firstRow}>
                 <HStack alignItems="center">
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("Add Workout Plan")}
+                    onPress={() => navigation.navigate("Add Gym")}
                   >
                     <Image
                       shadow={2}
-                      source={require("../../assets/addWorkoutPlan.png")}
+                      source={require("../../assets/Gym.png")}
                       alt="Alternate Text"
                       size="sm"
                     />
                   </TouchableOpacity>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("Display Workout Plans")}
+                    onPress={() => navigation.navigate("Add Membership Plan")}
                   >
                     <Image
                       shadow={2}
-                      source={require("../../assets/viewWorkoutPlan.png")}
+                      source={require("../../assets/membership.png")}
                       alt="Alternate Text"
                       size="xl"
                     />
@@ -165,20 +152,20 @@ export default function TrainerDashboard({ navigation }) {
               <View>
                 <HStack>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("View other Workout Plans")}
+                    onPress={() => navigation.navigate("View Gym")}
                   >
                     <Image
                       shadow={2}
-                      source={require("../../assets/viewOtherWorkoutPlan.png")}
+                      source={require("../../assets/viewgym.png")}
                       alt="Alternate Text"
                       size="xl"
                     />
                   </TouchableOpacity>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("Display Stats")}
+                    onPress={() => navigation.navigate("View Membership Plan")}
                   >
                     <Image
-                      source={require("../../assets/workoutStats.png")}
+                      source={require("../../assets/viewmembership.png")}
                       alt="Alternate Text"
                       size="xl"
                     />
@@ -208,7 +195,6 @@ const styles = StyleSheet.create({
     // borderRadius: 10,
     marginRight:10,
     marginLeft:10,
-    // boxShadow: '0 4px 30px rgba(70, 200, 250, 0.15)',
   },
   stackStyles: {
     marginTop: 0,

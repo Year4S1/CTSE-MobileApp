@@ -18,6 +18,13 @@ import UpdateMyGym from './components/User/UpdateMyGymDetails'
 import GetExersice from './components/User/GetExersice'
 import Qr from './components/User/Qr'
 import UpdateWorkoutPlan from './components/Trainer/UpdateWorkoutPlan';
+import WorkoutStats from './components/Trainer/WorkoutStats';
+import GymownerDashboard from './components/GymOwner/GymOwnerDashboard';
+import AddGym from './components/GymOwner/AddGym';
+import ViewGym from './components/GymOwner/ViewGym';
+import AddMembershipPlan from './components/GymOwner/AddMembershipPlan';
+import ViewMembershipPlan from './components/GymOwner/ViewMembershipPlan';
+
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
@@ -25,7 +32,7 @@ export default function App() {
     <Stack.Navigator>
     <Stack.Screen name="Login" component={Login}/>
     <Stack.Screen name="Registration" component={Registration}/>
-    <Stack.Screen name="trainer Dashboard" component={TrainerDashboard}/>
+    <Stack.Screen name="Trainer Dashboard" component={TrainerDashboard}/>
     <Stack.Screen name="user Dashboard" component={UserDashboard}/>
     <Stack.Screen name="join gym" component={JoinGym}/>
     <Stack.Screen name="my gym details" component={MyGym}/>
@@ -39,7 +46,14 @@ export default function App() {
     <Stack.Screen name="Button" component={ButtonComponent}/>
     <Stack.Screen name="Test" component={Test}/>
     <Stack.Screen name="Update Workout Plan" component={UpdateWorkoutPlan}/>
-    
+    <Stack.Screen name="Display Stats" component={WorkoutStats}/>
+
+    <Stack.Screen name="Gym Owner Dashboard" component={GymownerDashboard}/>
+    <Stack.Screen name="Add Gym" component={AddGym}/>
+    <Stack.Screen name="View Gym" component={ViewGym}/>
+    <Stack.Screen name="Add Membership Plan" component={AddMembershipPlan}/>
+    <Stack.Screen name="View Membership Plan" component={ViewMembershipPlan}/>
+
   
     </Stack.Navigator>
     </NavigationContainer>
