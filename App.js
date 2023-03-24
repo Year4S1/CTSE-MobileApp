@@ -15,6 +15,7 @@ import DisplayOtherWorkoutPlans from './components/Trainer/DisplayOtherWorkoutPl
 import JoinGym from './components/User/JoinGym'
 import MyGym from './components/User/MyGymDetail'
 import UpdateMyGym from './components/User/UpdateMyGymDetails'
+import UpdateWorkoutPlan from './components/Trainer/UpdateWorkoutPlan';
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
@@ -33,6 +34,8 @@ export default function App() {
     <Stack.Screen name="User Profile" component={UserProfile}/>
     <Stack.Screen name="Button" component={ButtonComponent}/>
     <Stack.Screen name="Test" component={Test}/>
+    <Stack.Screen name="Update Workout Plan" component={UpdateWorkoutPlan}/>
+    
   
     </Stack.Navigator>
     </NavigationContainer>

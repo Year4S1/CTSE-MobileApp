@@ -21,6 +21,7 @@ import { useEffect } from "react";
 import { firebase } from "../../Config";
 import { useState } from "react";
 import { useIsFocused } from "@react-navigation/native";
+import image from "../../assets/lowOpWorkoutBack.png"
 export default function TrainerDashboard({ navigation }) {
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
@@ -86,6 +87,7 @@ export default function TrainerDashboard({ navigation }) {
 
   return (
     <NativeBaseProvider >
+      
       <View  fontStyles style={styles.stackStyles} s>
         <View style={{ marginLeft: 30, marginTop: 10}}>
         <ImageBackground

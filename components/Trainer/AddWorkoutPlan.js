@@ -17,6 +17,8 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { firebase } from "../../Config";
 import { useEffect } from "react";
 import Footer from "../Common/Footer";
+import image from "../../assets/lowOpWorkoutBack.png"
+import tw from 'twrnc';
 
 const AddWorkoutPlan = () => {
 
@@ -77,13 +79,13 @@ const AddWorkoutPlan = () => {
   };
   return (
     <NativeBaseProvider >
-
+  {/* <ImageBackground source={image} resizeMode="cover"> */}
         <View style={{ marginVertical: 30 }}>
        
           <Box w="100%">
             <FormControl>
               <Stack mx="8">
-                <FormControl.Label>Workout Plan ID</FormControl.Label>
+                <FormControl.Label style={{fontWeight:"bold"}}>Workout Plan ID</FormControl.Label>
                 <Input
                   onChangeText={(val) => {
                     setWorkoutId(val);
@@ -92,7 +94,7 @@ const AddWorkoutPlan = () => {
                   placeholder="Please enter the Test ID"
                 />
                 <View style={{ marginVertical: 10 }}>
-                  <FormControl.Label>Workout Type</FormControl.Label>
+                  <Text style={tw`font-black `} >Workout Type</Text>
                   <Select
                     shadow={2}
                     selectedValue={workoutType}
@@ -129,7 +131,7 @@ const AddWorkoutPlan = () => {
                 </View>
 
                 <View>
-                  <FormControl.Label>Body Type</FormControl.Label>
+                  <Text style={tw`font-black`}>Body Type</Text>
                   <Select
                     shadow={2}
                     selectedValue={bodyType}
@@ -222,7 +224,7 @@ const AddWorkoutPlan = () => {
         </View>
      
         <View><Footer /></View>
- 
+        {/* </ImageBackground> */}
     </NativeBaseProvider>
   );
 };
