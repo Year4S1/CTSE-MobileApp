@@ -140,7 +140,7 @@ export default function GymownerDashboard({ navigation }) {
                     />
                   </TouchableOpacity>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("Display Test Data")}
+                    onPress={() => navigation.navigate("Add Membership Plan")}
                   >
                     <Image
                       shadow={2}

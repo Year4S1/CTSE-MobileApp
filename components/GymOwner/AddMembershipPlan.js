@@ -16,7 +16,7 @@ import {
   import { useEffect } from "react";
   import Footer from "../Common/Footer";
 
-  const AddGym = () => {
+  const AddMembershipPlan = () => {
 
     const [planName,setPlanName]=useState("");
     const [price,setPrice]=useState("");
@@ -133,4 +133,4 @@ import {
     },
   });
   
-  export default AddGym;
+  export default AddMembershipPlan;
