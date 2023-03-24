@@ -31,8 +31,8 @@ const Login = ({ navigation }) => {
           navigation.navigate("Trainer Dashboard");
         } else if (role === "user") {
           navigation.navigate("user Dashboard");
-        } else if (role === "donator") {
-          navigation.navigate("donator Dashboard");
+        } else if (role === "gymowner") {
+          navigation.navigate("Gym Owner Dashboard");
         } else {
           navigation.navigate("beneficiary Dashboard");
         }

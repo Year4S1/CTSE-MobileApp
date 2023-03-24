@@ -1,6 +1,6 @@
 import { NativeBaseProvider, ScrollView } from "native-base";
 import React, { cloneElement, useEffect, useState } from "react";
-import { Button, ImageBackground, Pressable, StyleSheet, View } from "react-native";
+import { Button, ImageBackground, Pressable, View } from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
 import { firebase } from "../../Config";
 import { AntDesign } from "@expo/vector-icons";
@@ -8,54 +8,51 @@ import tw from 'twrnc';
 import image from "../../assets/displayPlansBack.jpg"
 
 
-const DisplayWorkoutPlans = ({ navigation }) => {
-  const [workoutPlans, setWorkoutPlans] = useState([]);
-  const [currentRecordId, setCurrentRecordId] = useState([]);
-
+const ViewGym = ({ navigation }) => {
+  const [gymData, setGymData] = useState([]);
+  const [currentGymID, setCurrentGymID] = useState([]);
+const role=firebase.auth().currentUser.photoURL
   const handleDelete = (index) => {
     firebase
       .firestore()
-      .collection("WorkoutPlans")
-      .doc(currentRecordId[index])
+      .collection("Gym List")
+      .doc(currentProductId[index])
       .delete()
       .then(() => {
-        alert("Plan deleted!");
+        alert("Deleted");
       });
 
-    const recordCopy = [...workoutPlans];
+    const recordCopy = [...gymData];
     recordCopy.splice(index, 1);
-    setWorkoutPlans(recordCopy);
+    setGymData(recordCopy);
   };
 
   useEffect(() => {
     firebase
       .firestore()
-      .collection("WorkoutPlans").where('UserID', '==', firebase.auth().currentUser.uid)
+      .collection("Gym List")
       .get()
       .then((querySnapshot) => {
         console.log("Total users: ", querySnapshot.size);
-        const workoutPlanData = []
+       const products=[]
         querySnapshot.forEach((documentSnapshot) => {
+        
+            products.push(documentSnapshot.data());
+          setGymData(products);
 
-          workoutPlanData.push(documentSnapshot.data());
-          setWorkoutPlans(workoutPlanData);
-
-          setCurrentRecordId((prevState) => [
+          setCurrentGymID((prevState) => [
             ...prevState,
             documentSnapshot.id,
           ]);
         });
       });
   }, []);
-
- 
-
   return (
     <NativeBaseProvider>
         <ImageBackground source={image} style={{flex:1}} resizeMode="cover">
       <ScrollView>
         {
-          workoutPlans.map((item, index) => {
+          gymData.map((item, index) => {
             return (
               <NativeBaseProvider>
   
@@ -65,15 +62,34 @@ const DisplayWorkoutPlans = ({ navigation }) => {
                  
                     <Card.Title style={tw`font-black text-xl mb-1`} title={`Workout Plan ${index + 1}`} />
                     <Card.Content>
-                      <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Workout Plan ID :{item.WorkoutPlanId}</Title>
-                      <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Workout Type :{item.WorkoutType}</Title>
-                      <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Body Type :{item.BodyType}</Title>
-                      <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Intensity :{item.Intensity}</Title>
-                      <Title style={tw`inline-block bg-gray-200  px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>{item.WorkoutSchedule}</Title>
-                      <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Added Date :{item.SubDate}</Title>
-                    </Card.Content>
+            <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Gym Name :{item.GymName}</Title>
+            <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Location :{item.Location}</Title>
+            <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Contact :{item.Contact}</Title>
+            <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Open Time :{item.OpenTime}</Title>
+          </Card.Content>
                     <Card.Actions>
-                      
+                      {/* <Button
+                color="#FF0000"
+                onPress={() => {
+                  handleDelete(index);
+                }}
+                title="Delete"
+              >
+            
+              </Button> */}
+
+                      {/* <Button
+                color="#00FF00"0
+
+                
+                onPress={() => {
+                  navigation.navigate("Update Test Record",
+                    {currentRecordId:currentRecordId[index]});
+                }}
+                title="Update"
+              >
+
+              </Button> */}
                       <AntDesign
                         onPress={() => {
                           navigation.navigate("Update Workout Plan", {
@@ -110,21 +126,6 @@ const DisplayWorkoutPlans = ({ navigation }) => {
   )
 };
 
-export default DisplayWorkoutPlans;
 
-const styles = StyleSheet.create({
-  container: {
-    maxWidth: "500px",
-    height: "300px",
-    padding: "35px",
-    display:"flex",
-    flexDirection: "column",   
-     justifyContent: "space-between",
-    // backgroundColor: rgba(255, 255, 255, .45),
-    bordeRadius: "20px",
-    border: "1px solid rgba(255, 255, 255, .25)",
-    boxShadow: "0 0 10px 1px rgba(0, 0, 0, .25)",
-    backdropFilter: "blur(15px)"
-  },
- 
-});
+
+export default ViewGym;
