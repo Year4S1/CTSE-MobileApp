@@ -15,6 +15,7 @@ import {
 } from "native-base";
 import { firebase } from "../../Config";
 import { useState } from "react";
+import tw from 'twrnc';
 const Registration = ({navigation}) => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -139,7 +140,7 @@ const Registration = ({navigation}) => {
               >
                 <Select.Item shadow={2} label="Trainer" value="trainer" />
                 <Select.Item shadow={2} label="User" value="user" />
-                <Select.Item shadow={2} label="Gym Owner" value="beneficiary" />
+                <Select.Item shadow={2} label="Gym Owner" value="gymowner" />
                 <Select.Item shadow={2} label="Nutritionist" value="nutritionist" />
               </Select>
             </FormControl>
@@ -175,7 +176,7 @@ const Registration = ({navigation}) => {
               <FormControl.Label>Confirm Password</FormControl.Label>
               <Input placeholder="Confirm Password" type="password" />
             </FormControl>
-            <Button mt="2" onPress={handleRegistration}>
+            <Button mt="2" onPress={handleRegistration} style={tw`bg-red-400`}>
               Sign up
             </Button>
           </VStack>

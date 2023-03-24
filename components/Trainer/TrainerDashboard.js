@@ -21,14 +21,17 @@ import { useEffect } from "react";
 import { firebase } from "../../Config";
 import { useState } from "react";
 import { useIsFocused } from "@react-navigation/native";
+import image from "../../assets/displayPlansBlackandWhite.jpg"
 export default function TrainerDashboard({ navigation }) {
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
-  const [userRole, setUserRole] = useState("");
+  const [userRole, setUserRole] = useState(""); 
   const [lastRecordId, setlastRecordId] = useState("");
   const [subDate, setSubDate] = useState("");
-  const [hPriorityCount, setHPriorityCount] = useState(0);
-  const [totSampleCount, setTotSampleCount] = useState(0);
+  const [highIntensityCount, setHIntensityCount] = useState(0);
+  const [mediumIntensityCount, setMIntensityCount] = useState(0);
+  const [lowIntensityCount, setLIntensityCount] = useState(0);
+  const [totWorkoutCount, setTotWorkoutCount] = useState(0);
   const isFocused=useIsFocused()
   useEffect(() => {
  
@@ -38,25 +41,35 @@ export default function TrainerDashboard({ navigation }) {
     const UserId = firebase.auth().currentUser.uid;
     setUserId(UserId);
 
-    let hPriorityCount = 0;
+    let hIntensityCount = 0;
+    let mIntensityCount = 0;
+    let lIntensityCount = 0;
     firebase
       .firestore()
-      .collection("TestResults")
+      .collection("WorkoutPlans")
       .where("UserID", "==", firebase.auth().currentUser.uid)
       .get()
       .then((querySnapshot) => {
-        setTotSampleCount(querySnapshot.size);
+        setTotWorkoutCount(querySnapshot.size);
         querySnapshot.forEach((documentSnapshot) => {
-          if (documentSnapshot.data().Priority === "high") {
-            ++hPriorityCount;
-            setHPriorityCount(hPriorityCount);
+          if (documentSnapshot.data().Intensity === "high") {
+            ++hIntensityCount;
+            setHIntensityCount(hIntensityCount);
+          }
+          else if (documentSnapshot.data().Priority === "medium") {
+            ++mIntensityCount;
+            setMIntensityCount(mIntensityCount);
+          }
+          else {
+            ++lIntensityCount;
+            setLIntensityCount(lIntensityCount);
           }
         });
       });
 
     firebase
       .firestore()
-      .collection("TestResults")
+      .collection("WorkoutPlans")
 
       .where("UserID", "==", firebase.auth().currentUser.uid)
      .limit(1)
@@ -86,28 +99,26 @@ export default function TrainerDashboard({ navigation }) {
 
   return (
     <NativeBaseProvider >
-      <View  fontStyles style={styles.stackStyles} s>
-        <View style={{ marginLeft: 30, marginTop: 10}}>
-        <ImageBackground
-            blurRadius={0}
-            source={require("../../assets/pngSplash.png")}
-          >
+  <ImageBackground source={image} style={{flex:1}}>
+      <View  fontStyles >
+        <View style={{ marginTop: 10}}>
+        
           <Card style={styles.card}>
             <Card.Content>
-              <Text fontSize="2xl" bold>
+              <Text style={{color:"white"}} fontSize="2xl" bold>
                 {DayType}! {userName}
               </Text>
-              <Text style={{ marginTop: 10 }} fontSize="md">
-                Total Sample Count: {totSampleCount}
+              <Text style={{ marginTop: 10,color:"white",fontWeight:"bold" }} fontSize="md">
+                Total Workouts Added: {totWorkoutCount}
               </Text>
-              <Text style={{ marginTop: 10 }} fontSize="md">
-                Last Record Sample ID: {lastRecordId}
+              <Text style={{ marginTop: 10,color:"white",fontWeight:"bold" }} fontSize="md">
+                High Intensity Workouts: {highIntensityCount}
               </Text>
-              <Text style={{ marginTop: 10 }} fontSize="md">
-                Last Record Submited Date: {subDate}
+              <Text style={{ marginTop: 10,color:"white",fontWeight:"bold" }} fontSize="md">
+              Medium Intensity Workouts: {mediumIntensityCount}
               </Text>
-              <Text style={{ marginTop: 10 }} fontSize="md">
-                High priority samples: {hPriorityCount}
+              <Text style={{ marginTop: 10,color:"white",fontWeight:"bold" }} fontSize="md">
+              Low Intensity Workouts: {lowIntensityCount}
               </Text>
             </Card.Content>
             <Center>
@@ -122,7 +133,7 @@ export default function TrainerDashboard({ navigation }) {
             </Center>
     
           </Card>
-          </ImageBackground>
+        
         </View>
         <Stack space={3} alignItems="center">
           <View style={styles.options}>
@@ -154,7 +165,7 @@ export default function TrainerDashboard({ navigation }) {
               <View>
                 <HStack>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("View other Data")}
+                    onPress={() => navigation.navigate("View other Workout Plans")}
                   >
                     <Image
                       shadow={2}
@@ -164,7 +175,7 @@ export default function TrainerDashboard({ navigation }) {
                     />
                   </TouchableOpacity>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("Display Percentages")}
+                    onPress={() => navigation.navigate("Display Stats")}
                   >
                     <Image
                       source={require("../../assets/workoutStats.png")}
@@ -180,6 +191,7 @@ export default function TrainerDashboard({ navigation }) {
         </Stack>
         <Footer /> 
       </View>
+      </ImageBackground>
     </NativeBaseProvider>
   );
 }
@@ -192,9 +204,11 @@ const styles = StyleSheet.create({
   },
   card:{
     marginTop:20,
-    backgroundColor: "rgba(178, 235, 250, 0.2)",
-    borderRadius: 1,
-    boxShadow: '0 4px 30px rgba(70, 200, 250, 0.15)',
+    backgroundColor: "rgba(255, 99, 102, 0.1)",
+    // borderRadius: 10,
+    marginRight:10,
+    marginLeft:10,
+    // boxShadow: '0 4px 30px rgba(70, 200, 250, 0.15)',
   },
   stackStyles: {
     marginTop: 0,
