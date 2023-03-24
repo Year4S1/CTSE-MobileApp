@@ -60,6 +60,10 @@ function MyGymDetail() {
       });
   };
 
+  const updateDetails =()=>{
+    navigation.navigate("update gym details")
+  }
+
   const handleAddDetails = () => {
     navigation.navigate("join gym");
   };
@@ -86,7 +90,7 @@ function MyGymDetail() {
                 <Text style={{ fontSize: 22, color: "black", margin: 20 }}>
                   Description : {user.Description}
                 </Text>
-                <Button mt="2">Update</Button>
+                <Button mt="2" onPress={updateDetails}>Update</Button>
                 <Button mt="3" onPress={deleteDetails}>
                   Delete
                 </Button>
