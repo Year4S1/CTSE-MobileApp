@@ -14,6 +14,7 @@ import UserProfile from './components/Common/UserProfile';
 import DisplayOtherWorkoutPlans from './components/Trainer/DisplayOtherWorkoutPlans';
 import JoinGym from './components/User/JoinGym'
 import MyGym from './components/User/MyGymDetail'
+import UpdateMyGym from './components/User/UpdateMyGymDetails'
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
@@ -25,6 +26,7 @@ export default function App() {
     <Stack.Screen name="user Dashboard" component={UserDashboard}/>
     <Stack.Screen name="join gym" component={JoinGym}/>
     <Stack.Screen name="my gym details" component={MyGym}/>
+    <Stack.Screen name="update gym details" component={UpdateMyGym}/>
     <Stack.Screen name="Add Workout Plan" component={AddWorkoutPlan}/>
     <Stack.Screen name="Display Workout Plans" component={DisplayWorkoutPlans}/>
     <Stack.Screen name="View other Workout Plans" component={DisplayOtherWorkoutPlans}/>
