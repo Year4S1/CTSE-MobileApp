@@ -23,6 +23,14 @@ const UserDashboard = () => {
   const viewMyDetails = () =>{
     navigation.navigate("my gym details")
   }
+
+  const getExersice =() =>{
+    navigation.navigate("get exersices")
+  }
+
+  const qr =()=>{
+    navigation.navigate("qr")
+  }
   return (
     <View style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
@@ -53,8 +61,9 @@ const UserDashboard = () => {
             <Text style={{ fontSize: 22, color: "#FFFFFF" }}>View My Plan</Text>
           </TouchableOpacity>
         </View>
-        <View style={[{ width: "100%", height: 50, marginTop: 10 }]}>
+        {/* <View style={[{ width: "100%", height: 50, marginTop: 10 }]}>
           <TouchableOpacity
+          onPress={getExersice}
             style={{
               height: 50,
               backgroundColor: "#000000c0",
@@ -62,11 +71,12 @@ const UserDashboard = () => {
               justifyContent: "center",
             }}
           >
-            <Text style={{ fontSize: 22, color: "#FFFFFF" }}>Join a Gym</Text>
+            <Text style={{ fontSize: 22, color: "#FFFFFF" }}>Get Exersices</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
         <View style={[{ width: "100%", height: 50, marginTop: 10 }]}>
           <TouchableOpacity
+          onPress={qr}
             style={{
               height: 50,
               backgroundColor: "#000000c0",
@@ -74,7 +84,7 @@ const UserDashboard = () => {
               justifyContent: "center",
             }}
           >
-            <Text style={{ fontSize: 22, color: "#FFFFFF" }}>Join a Gym</Text>
+            <Text style={{ fontSize: 22, color: "#FFFFFF" }}>Qr</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>

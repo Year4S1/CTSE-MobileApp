@@ -15,6 +15,8 @@ import DisplayOtherWorkoutPlans from './components/Trainer/DisplayOtherWorkoutPl
 import JoinGym from './components/User/JoinGym'
 import MyGym from './components/User/MyGymDetail'
 import UpdateMyGym from './components/User/UpdateMyGymDetails'
+import GetExersice from './components/User/GetExersice'
+import Qr from './components/User/Qr'
 import UpdateWorkoutPlan from './components/Trainer/UpdateWorkoutPlan';
 import WorkoutStats from './components/Trainer/WorkoutStats';
 import GymownerDashboard from './components/GymOwner/GymOwnerDashboard';
@@ -36,6 +38,8 @@ export default function App() {
     <Stack.Screen name="join gym" component={JoinGym}/>
     <Stack.Screen name="my gym details" component={MyGym}/>
     <Stack.Screen name="update gym details" component={UpdateMyGym}/>
+    <Stack.Screen name="get exersices" component={GetExersice}/>
+    <Stack.Screen name="qr" component={Qr}/>
     <Stack.Screen name="Add Workout Plan" component={AddWorkoutPlan}/>
     <Stack.Screen name="Display Workout Plans" component={DisplayWorkoutPlans}/>
     <Stack.Screen name="View other Workout Plans" component={DisplayOtherWorkoutPlans}/>
