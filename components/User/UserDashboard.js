@@ -19,6 +19,10 @@ const UserDashboard = () => {
   const joinGym = () => {
     navigation.navigate("join gym");
   };
+
+  const viewMyDetails = () =>{
+    navigation.navigate("my gym details")
+  }
   return (
     <View style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
@@ -38,6 +42,7 @@ const UserDashboard = () => {
         </View>
         <View style={[{ width: "100%", height: 50, marginTop: 10 }]}>
           <TouchableOpacity
+          onPress={viewMyDetails}
             style={{
               height: 50,
               backgroundColor: "#000000c0",
@@ -45,7 +50,7 @@ const UserDashboard = () => {
               justifyContent: "center",
             }}
           >
-            <Text style={{ fontSize: 22, color: "#FFFFFF" }}>Join a Gym</Text>
+            <Text style={{ fontSize: 22, color: "#FFFFFF" }}>View My Plan</Text>
           </TouchableOpacity>
         </View>
         <View style={[{ width: "100%", height: 50, marginTop: 10 }]}>
