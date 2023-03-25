@@ -4,37 +4,34 @@ import { Button, ImageBackground, Pressable, StyleSheet, View } from "react-nati
 import { Card, Paragraph, Title } from "react-native-paper";
 import { firebase } from "../../Config";
 import { AntDesign } from "@expo/vector-icons";
+import { Feather } from '@expo/vector-icons';
 import tw from 'twrnc';
 
 
 const CallClients = ({ navigation }) => {
   const [mealPlans, setMealPlans] = useState([]);
   const [currentRecordId, setCurrentRecordId] = useState([]);
+  const handleCall = (phoneNumber) => {
 
+    if (Platform.OS === 'android') {
+      phoneNumber = `tel:${phoneNumber}`;
+    } else {
+      phoneNumber = `telprompt:${phoneNumber}`;
+    }
+
+    Linking.openURL(phoneNumber);
+
+  };
   const image = {
     uri: "https://images.unsplash.com/photo-1569420077790-afb136b3bb8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80",
   };
   const UserName = firebase.auth().currentUser.displayName;
   console.log(UserName);
-  const handleDelete = (index) => {
-    firebase
-      .firestore()
-      .collection("MealLists")
-      .doc(currentRecordId[index])
-      .delete()
-      .then(() => {
-        alert("Meal Plan deleted!");
-      });
-
-    const recordCopy = [...mealPlans];
-    recordCopy.splice(index, 1);
-    setMealPlans(recordCopy);
-  };
 
   useEffect(() => {
     firebase
       .firestore()
-      .collection("MealLists").where('Creater', '==', UserName)
+      .collection("RegistrationDetails")
       .get()
       .then((querySnapshot) => {
         console.log("Total meal plans: ", querySnapshot.size);
@@ -69,34 +66,14 @@ const CallClients = ({ navigation }) => {
                  
                     <Card.Title style={tw`font-black text-xl mb-1`} title={`Meal Plan ${index + 1}`} />
                     <Card.Content>
-                      <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Dish Name :{item.DishName}</Title>
-                      <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Meal Type :{item.MealType}</Title>
-                      <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Ingredients :{item.Ingredients}</Title>
-                      <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Dietary Restrictions :{item.DietaryRestrictions}</Title>
-                      <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>ServingSize :{item.ServingSize}</Title>
-                      <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>TimeToPrepare :{item.TimeToPrepare}</Title>
+                      <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Client Name :{item.UserName}</Title>
+                      <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Contact No :{item.PhoneNumebr}</Title>
                     </Card.Content>
+                    
                     <Card.Actions>
-                    <AntDesign
-                        onPress={() => {
-                          navigation.navigate("Update Meal Plan", {
-                            currentRecordId: currentRecordId[index],
-                          });
-                        }}
-                        name="edit"
-                        size={35}
-                        color="green"
-                        
-                      />
-
-                      <AntDesign
-                        onPress={() => {
-                          handleDelete(index);
-                        }}
-                        name="delete"
-                        size={35}
-                        color="red"
-                      />
+                    <Feather name="phone-call"    onPress={() => {
+                        handleCall(item.PhoneNumber);
+                    }} size={35} color="green" />
                       
                     </Card.Actions>
                   </Card>
