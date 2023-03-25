@@ -24,6 +24,7 @@ import AddGym from './components/GymOwner/AddGym';
 import ViewGym from './components/GymOwner/ViewGym';
 import AddMembershipPlan from './components/GymOwner/AddMembershipPlan';
 import ViewMembershipPlan from './components/GymOwner/ViewMembershipPlan';
+import UpdateMembershipPlan from './components/GymOwner/UpdateMembership';
 
 //nutritionist
 import NutritionistDashboard from './components/Nutritionist/NutritionistDashboard';
@@ -59,6 +60,7 @@ export default function App() {
     <Stack.Screen name="View Gym" component={ViewGym}/>
     <Stack.Screen name="Add Membership Plan" component={AddMembershipPlan}/>
     <Stack.Screen name="View Membership Plan" component={ViewMembershipPlan}/>
+    <Stack.Screen name="Update Membership Plan" component={UpdateMembershipPlan}/>
 
     <Stack.Screen name="Nutritionist Dashboard" component={NutritionistDashboard}/>
     <Stack.Screen name="Create Meal Plan" component={AddMealPlan}/>
