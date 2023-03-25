@@ -89,7 +89,7 @@ function AddMealPlan() {
                 </Heading>
                 <VStack space={3} mt="5">
                   <FormControl>
-                    <FormControl.Label>Dish Nane</FormControl.Label>
+                    <FormControl.Label>Dish Name</FormControl.Label>
                     <Input
                       onChangeText={(val) => {
                         setDishName(val);
@@ -151,6 +151,7 @@ function AddMealPlan() {
                         setServingSize(val);
                        }}
                       placeholder="Serving Size"
+                      type="number"
                     />
                   </FormControl>
                   <FormControl>
