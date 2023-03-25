@@ -64,10 +64,10 @@ const CallClients = ({ navigation }) => {
             
                   <Card key={index} style={tw`ml-3 max-w-sm rounded overflow-hidden shadow-lg rounded-3xl `}>
                  
-                    <Card.Title style={tw`font-black text-xl mb-1`} title={`Meal Plan ${index + 1}`} />
+                    <Card.Title style={tw`font-black text-xl mb-1`} title={`Client ${index + 1}`} />
                     <Card.Content>
                       <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Client Name :{item.UserName}</Title>
-                      <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Contact No :{item.PhoneNumebr}</Title>
+                      <Title style={tw`inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2`}>Contact No :{item.PhoneNumber}</Title>
                     </Card.Content>
                     
                     <Card.Actions>

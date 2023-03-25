@@ -31,6 +31,7 @@ import NutritionistDashboard from './components/Nutritionist/NutritionistDashboa
 import AddMealPlan from './components/Nutritionist/AddMealPlan';
 import DisplayMealPlans from './components/Nutritionist/DisplayMealPlans';
 import UpdateMealPlan from './components/Nutritionist/UpdateMealPlan';
+import CallClients from './components/Nutritionist/CallClients';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -66,6 +67,7 @@ export default function App() {
     <Stack.Screen name="Create Meal Plan" component={AddMealPlan}/>
     <Stack.Screen name="My Meal Plans" component={DisplayMealPlans}/>
     <Stack.Screen name="Update Meal Plan" component={UpdateMealPlan}/>
+    <Stack.Screen name="Call Client" component={CallClients}/>
 
     </Stack.Navigator>
     </NavigationContainer>
