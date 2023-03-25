@@ -33,6 +33,8 @@ const Login = ({ navigation }) => {
           navigation.navigate("user Dashboard");
         } else if (role === "gymowner") {
           navigation.navigate("Gym Owner Dashboard");
+        } else if (role === "nutritionist") {
+          navigation.navigate("Nutritionist Dashboard");
         } else {
           navigation.navigate("beneficiary Dashboard");
         }
