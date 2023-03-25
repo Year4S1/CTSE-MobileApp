@@ -25,7 +25,7 @@ const NutritionistDashboard = () => {
   }
 
   const nutritionFacts =() =>{
-    navigation.navigate("Nutrition Facts")
+    navigation.navigate("Call Client")
   }
 
   

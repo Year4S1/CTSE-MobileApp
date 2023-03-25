@@ -9,6 +9,7 @@ import {
   Stack,
   WarningOutlineIcon,
   Button as NativeBaseButton,
+  TextArea,
 } from "native-base";
 import React, { useEffect, useState } from "react";
 import {
@@ -22,7 +23,7 @@ import {
 import { firebase } from "../../Config";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import Footer from "../Common/Footer";
-
+import tw from 'twrnc';
 
 
 const UpdateWorkoutPlan = ({ route, navigation }) => {
@@ -87,7 +88,7 @@ const UpdateWorkoutPlan = ({ route, navigation }) => {
       })
       .then(() => {
         alert("Workout Plan Updated!");
-        navigation.navigate("trainer Dashboard");
+        navigation.navigate("Trainer Dashboard");
       });
   };
 
