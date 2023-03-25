@@ -14,6 +14,7 @@ import {
   Select,
   Text,
   VStack,
+  ScrollView
 } from "native-base";
 import {
   ImageBackground,
@@ -62,6 +63,7 @@ function AddMealPlan() {
 
   return (
     <NativeBaseProvider>
+     <ScrollView>  
       <View style={styles.container}>
         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
           <Center w="100%">
@@ -142,7 +144,7 @@ function AddMealPlan() {
                       placeholder="Ingredients"
                     />
                   </FormControl>
-                  {/* <FormControl>
+                  <FormControl>
                     <FormControl.Label>Serving Size</FormControl.Label>
                     <Input
                       onChangeText={(val) => {
@@ -150,7 +152,7 @@ function AddMealPlan() {
                        }}
                       placeholder="Serving Size"
                     />
-                  </FormControl> */}
+                  </FormControl>
                   <FormControl>
                     <FormControl.Label>Dietary Restrictions</FormControl.Label>
                     <Select
@@ -190,7 +192,7 @@ function AddMealPlan() {
                     </Select>
                   </FormControl>
                   
-                  {/* <FormControl>
+                  <FormControl>
                     <FormControl.Label>Time to Prepare</FormControl.Label>
                     <Input
                       onChangeText={(val) => {
@@ -198,7 +200,7 @@ function AddMealPlan() {
                        }}
                       placeholder="Time to Preapare"
                     />
-                  </FormControl> */}
+                  </FormControl>
                   <Button mt="2" onPress={createDetails}>Create</Button>
                 </VStack>
               </Box>
@@ -206,6 +208,7 @@ function AddMealPlan() {
           </Center>
         </ImageBackground>
       </View>
+      </ScrollView> 
     </NativeBaseProvider>
   );
 }

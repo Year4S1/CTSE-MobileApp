@@ -17,15 +17,15 @@ const NutritionistDashboard = () => {
   const navigation = useNavigation();
 
   const createMealPlan = () => {
-    navigation.navigate("create meal plan");
+    navigation.navigate("Create Meal Plan");
   };
 
   const viewMealPlan = () =>{
-    navigation.navigate("my meal plans")
+    navigation.navigate("My Meal Plans")
   }
 
   const nutritionFacts =() =>{
-    navigation.navigate("nutrition facts")
+    navigation.navigate("Nutrition Facts")
   }
 
   
