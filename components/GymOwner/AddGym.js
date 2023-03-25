@@ -15,6 +15,7 @@ import {
   import {firebase} from "../../Config";
   import { useEffect } from "react";
   import Footer from "../Common/Footer";
+  import { useNavigation } from "@react-navigation/native";
 
   const AddGym = () => {
 
@@ -22,6 +23,7 @@ import {
     const [location,setLocation]=useState("");
     const [contact,setContact]=useState("");
     const [openTime,setOpenTime]=useState("");
+    const [image, setImage] = useState("")
     const [userName, setUserName] = useState("");
     const [userId, setUserId] = useState("");
 
@@ -33,6 +35,8 @@ import {
         console.log("userId", UserId);
         setUserId(UserId);
       }, []);
+
+      const navigation = useNavigation();
  
   const addGym=()=>{
 
@@ -50,6 +54,7 @@ import {
     })
     .then(() => {
       alert('Gym Details Added!');
+      navigation.navigate("Gym Owner Dashboard");
     });
   
   
