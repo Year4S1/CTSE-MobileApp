@@ -25,9 +25,7 @@ import image from "../../assets/displayPlansBlackandWhite.jpg"
 export default function TrainerDashboard({ navigation }) {
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
-  const [userRole, setUserRole] = useState(""); 
-  const [lastRecordId, setlastRecordId] = useState("");
-  const [subDate, setSubDate] = useState("");
+
   const [highIntensityCount, setHIntensityCount] = useState(0);
   const [mediumIntensityCount, setMIntensityCount] = useState(0);
   const [lowIntensityCount, setLIntensityCount] = useState(0);
@@ -39,6 +37,7 @@ export default function TrainerDashboard({ navigation }) {
     console.log("userName", UserName);
     setUserName(UserName);
     const UserId = firebase.auth().currentUser.uid;
+    console.log("id",firebase.auth().currentUser.uid);
     setUserId(UserId);
 
     let hIntensityCount = 0;
@@ -56,31 +55,17 @@ export default function TrainerDashboard({ navigation }) {
             ++hIntensityCount;
             setHIntensityCount(hIntensityCount);
           }
-          else if (documentSnapshot.data().Priority === "medium") {
+          else if (documentSnapshot.data().Intensity === "medium") {
             ++mIntensityCount;
             setMIntensityCount(mIntensityCount);
           }
-          else {
+          else if (documentSnapshot.data().Intensity === "low") {
             ++lIntensityCount;
             setLIntensityCount(lIntensityCount);
           }
         });
       });
 
-    firebase
-      .firestore()
-      .collection("WorkoutPlans")
-
-      .where("UserID", "==", firebase.auth().currentUser.uid)
-     .limit(1)
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((documentSnapshot) => {
-          console.log(documentSnapshot.data());
-          setSubDate(documentSnapshot.data().SubDate);
-          setlastRecordId(documentSnapshot.data().TestID);
-        });
-      });
   }, [isFocused]);
 
   const date = new Date()
