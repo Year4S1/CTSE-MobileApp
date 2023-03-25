@@ -38,7 +38,7 @@ function JoinGym() {
   const [trainer, setTrainer] = useState("");
   const [gym, setGym] = useState("");
   const [description, setDescription] = useState("");
-  const [plan, setPlan] = useState("Yet to be selected");
+  const [plan, setPlan] = useState("Basic");
 
   useEffect(() => {
     firebase
