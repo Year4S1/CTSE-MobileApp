@@ -40,6 +40,8 @@ import {
       const UserId = firebase.auth().currentUser.uid;
       setUserId(UserId);
     }, []);
+
+    
   
     const updateMembership = () => {
       console.log("hi q");

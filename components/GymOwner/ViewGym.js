@@ -5,7 +5,7 @@ import { Card, Paragraph, Title } from "react-native-paper";
 import { firebase } from "../../Config";
 import { AntDesign } from "@expo/vector-icons";
 import tw from 'twrnc';
-import image from "../../assets/displayPlansBack.jpg"
+import image from "../../assets/list.jpeg"
 
 
 const ViewGym = ({ navigation }) => {

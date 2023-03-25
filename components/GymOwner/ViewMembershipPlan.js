@@ -1,4 +1,4 @@
-import { NativeBaseProvider } from "native-base";
+import { NativeBaseProvider, ScrollView } from "native-base";
 import React, { cloneElement, useEffect, useState } from "react";
 import { Button, Pressable, View } from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
@@ -45,54 +45,64 @@ const ViewMembershipPlan = ({ navigation }) => {
         });
       });
   }, []);
-  return planData.map((item, index) => {
-    return (
-      <View style={{ marginVertical: 10 }}>
-        <Card key={index} style={{
-          marginVertical: 10, marginLeft: 30, marginRight: 30, marginTop: 20,
-          backgroundColor: "rgba(78, 235, 250, 0.2)",
-          borderRadius: 0,
-          boxShadow: '0 4px 30px rgba(70, 200, 250, 0.15)',
-        }}>
-          <Card.Title title={`Plan ${index + 1}`} />
-          <Card.Content key={item.id}>
-            <Title>Gym Name :{item.PlanName}</Title>
-            <Title>Location :{item.Price}</Title>
-          </Card.Content>
-
-          {(role === "gymowner") && (
-            <View style={{ display: 'flex' }}>
-              <Card.Actions>
-                <AntDesign
-                  onPress={() => {
-                    navigation.navigate("Update Membership Plan", {
-                      currentPlanID: currentPlanID[index],
-                    });
-                  }}
-                  name="edit"
-                  size={35}
-                  color="green"
-                />
-
-                <AntDesign
-                  onPress={() => {
-                    handleDelete(index);
-                  }}
-                  name="delete"
-                  size={35}
-                  color="red"
-                />
-              </Card.Actions>
-            </View>
-          )
-          }
+  return (
+    <NativeBaseProvider>
+      <ScrollView>
+        {
+          planData.map((item, index) => {
+            return (
 
 
+              <ScrollView >
+                <View style={{
+                  marginVertical: 10, marginLeft: 30, marginRight: 30, marginTop: 20,
+                  backgroundColor: "rgba(78, 235, 250, 0.2)",
+                  borderRadius: 20,
+                  boxShadow: '0 4px 30px rgba(70, 200, 250, 0.15)',
+                }}>
+                  <Card key={index}>
+                    <Card.Title title={`Membership Plan ${index + 1}`} />
+                    <Card.Content key={item.id}>
+                      <Title>Gym Name :{item.PlanName}</Title>
+                      <Title>Location :{item.Price}</Title>
+                    </Card.Content>
 
-        </Card>
-      </View>
-    );
-  });
+                    {(role === "gymowner") && (
+                      <View style={{ display: 'flex' }}>
+                        <Card.Actions>
+                          <AntDesign
+                            onPress={() => {
+                              navigation.navigate("Update Membership Plan", {
+                                currentPlanID: currentPlanID[index],
+                              });
+                            }}
+                            name="edit"
+                            size={35}
+                            color="green"
+                          />
+
+                          <AntDesign
+                            onPress={() => {
+                              handleDelete(index);
+                            }}
+                            name="delete"
+                            size={35}
+                            color="red"
+                          />
+                        </Card.Actions>
+                      </View>
+                    )
+                    }
+                  </Card>
+                </View>
+              </ScrollView>
+
+            );
+          })
+        }
+      </ScrollView>
+    </NativeBaseProvider>
+  )
 };
 
 export default ViewMembershipPlan;
