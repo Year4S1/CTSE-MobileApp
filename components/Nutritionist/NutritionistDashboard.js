@@ -69,7 +69,7 @@ const NutritionistDashboard = () => {
               justifyContent: "center",
             }}
           >
-            <Text style={{ fontSize: 22, color: "#FFFFFF" }}>Find Nutrition Values</Text>
+            <Text style={{ fontSize: 22, color: "#FFFFFF" }}>Call Clients</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>
