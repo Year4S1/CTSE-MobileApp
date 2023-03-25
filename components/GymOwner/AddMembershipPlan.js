@@ -46,6 +46,7 @@ import {
     })
     .then(() => {
       alert('Membership Plan Added!');
+      navigation.navigate("Gym Owner Dashboard");
     });
   
   
