@@ -63,8 +63,8 @@ const ViewMembershipPlan = ({ navigation }) => {
                   <Card key={index}>
                     <Card.Title title={`Membership Plan ${index + 1}`} />
                     <Card.Content key={item.id}>
-                      <Title>Gym Name :{item.PlanName}</Title>
-                      <Title>Location :{item.Price}</Title>
+                      <Title>Membership Plan :{item.PlanName}</Title>
+                      <Title>Price :{item.Price}</Title>
                     </Card.Content>
 
                     {(role === "gymowner") && (

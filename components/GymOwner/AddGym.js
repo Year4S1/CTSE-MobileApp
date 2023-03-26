@@ -95,6 +95,7 @@ import {
                     shadow={2}
                     type="text"
                     placeholder="Please enter the Gym Name"
+                    
                   />
 
                 <FormControl.Label>Location</FormControl.Label>

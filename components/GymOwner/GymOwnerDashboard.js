@@ -92,23 +92,12 @@ export default function GymownerDashboard({ navigation }) {
       <View >
         <View style={{marginTop: 10}}>
           <Card style={styles.card}>
-            {/* <Card.Content>
+            <Card.Content>
               <Text style={{color:"white"}} fontSize="2xl" bold>
                 {DayType}! {userName}
               </Text>
-              <Text style={{ marginTop: 10, color:"white"}} fontSize="md">
-                Total Sample Count: {totSampleCount}
-              </Text>
-              <Text style={{ marginTop: 10, color:"white" }} fontSize="md">
-                Last Record Sample ID: {lastRecordId}
-              </Text>
-              <Text style={{ marginTop: 10, color:"white" }} fontSize="md">
-                Last Record Submited Date: {subDate}
-              </Text>
-              <Text style={{ marginTop: 10, color:"white" }} fontSize="md">
-                High priority samples: {hPriorityCount}
-              </Text>
-            </Card.Content> */}
+             
+            </Card.Content>
             <Center>
             <Card.Actions
               style={{ marginRight: 60, marginLeft: 60, marginTop: 20 }}

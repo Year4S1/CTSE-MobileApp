@@ -15,6 +15,7 @@ import {
   import {firebase} from "../../Config";
   import { useEffect } from "react";
   import Footer from "../Common/Footer";
+  import { useNavigation } from "@react-navigation/native";
 
   const AddMembershipPlan = () => {
 
@@ -31,6 +32,7 @@ import {
         console.log("userId", UserId);
         setUserId(UserId);
       }, []);
+      const navigation = useNavigation();
  
   const addMembershipPlan=()=>{
 
